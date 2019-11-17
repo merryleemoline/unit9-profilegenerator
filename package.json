@@ -1,0 +1,25 @@
+{
+  "name": "unit9-profilegenerator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merryleemoline/unit9-profilegenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/merryleemoline/unit9-profilegenerator/issues"
+  },
+  "homepage": "https://github.com/merryleemoline/unit9-profilegenerator#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "electron-html-to": "^2.6.0",
+    "inquirer": "^7.0.0",
+    "open": "^7.0.0"
+  }
+}
