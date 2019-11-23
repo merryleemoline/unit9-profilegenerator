@@ -24,7 +24,6 @@ const colors = {
     photoBorderColor: "white"
   }
 };
-
 function generateHTML(data) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -34,8 +33,7 @@ function generateHTML(data) {
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
       <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
-      <title>Document</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      <title>EmployeeProfile</title>
       <style>
           @page {
             margin: 0;
@@ -171,5 +169,55 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-      </style>`
-        }
+      </style>
+      <body>
+      <div class="wrapper">
+      <div class="photo-header">
+         <img src="${data.avatar_url}" alt="Picture of ${data.name}" />
+         <h1>${data.name}</h1>
+         <h2>${data.company ? `Current company: ${data.company}` : ""}</h2>
+         <h2>${data.location ? `Current location: ${data.location}` : ""}</h2>
+      </div>
+      <main>
+         <div class="container">
+         <div class="row">
+            <div class="col">
+               <h3>${data.bio ? `${data.bio}` : ""}</h3>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col">
+               <div class="card">
+                 <h3>Public Repositories</h3>
+                 <h4>${data.public_repos}</h4>
+               </div>
+            </div>
+             <div class="col">
+             <div class="card">
+               <h3>Followers</h3>
+               <h4>${data.followers}</h4>
+             </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col">
+            <div class="card">
+               <h3>GitHub Stars</h3>
+               <h4>${data.stars}</h4>
+               </div>
+            </div>
+             <div class="col">
+             <div class="card">
+               <h3>Following</h3>
+               <h4>${data.following}</h4>
+               </div>
+            </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</body>
+</html>`
+}
+
+module.exports = generateHTML;
