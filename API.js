@@ -43,20 +43,18 @@ const githubAPI = {
         process.exit(1);
       });
   },
-//   getTotalStars(username) {
-//     var api_url = `https://api.github.com/users/`
-//     var username = `${username}`
-//     var clientId = `${process.env.CLIENT_ID}`
-//     var clientSecret = `${process.env.CLIENT_SECRET}`
-//     return axios
-//       .get(api_url + username + '?client_id=' + clientId + '&client_secret=' + clientSecret)
-//       .then(response => {
-//         return response.data.reduce((acc, curr) => {
-//           acc += curr.stargazers_count;
-//           return acc;
-//         }, 0);
-//       });
-//   }
-}
+  getTotalStars(username) {
+    var api_url = `https://api.github.com/users/`
+    var username = `${username}`
+    var clientId = `${process.env.CLIENT_ID}`
+    var clientSecret = `${process.env.CLIENT_SECRET}`
+    return axios
+      .get(api_url + username + '/repos?client_id=' + clientId + '&client_secret=' + clientSecret + '&perpage=100')
+      .then(response => {
+        return response.data.reduce((acc, curr) => {
+          acc += curr.stargazers_count;
+          return acc;}, 0);
+      });
+    }}
 
 module.exports = githubAPI;

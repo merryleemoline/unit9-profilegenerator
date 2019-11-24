@@ -27,9 +27,10 @@ const questions = [
 function init() {
     inquirer.prompt(questions).then(({ github, color }) => {
         console.log("((Getting data))");
-        githubAPI.getUser(github)
-        .then(response =>
-              {return generateHTML({ color, ...response.data});})
+        githubAPI.getUser(github).then(response =>
+          githubAPI.getTotalStars(github)
+        .then(stars => {
+          return generateHTML({stars,color,...response.data });})
     .then(html => {
       const conversion = convertFactory({
         converterPath: convertFactory.converters.PDF
@@ -41,7 +42,7 @@ function init() {
       });
 
       open(path.join(process.cwd(), "profile.pdf"));
-    });
+    }));
 });
 }
 
